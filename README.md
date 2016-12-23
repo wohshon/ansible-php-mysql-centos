@@ -3,10 +3,12 @@
 
 (Modified from Ansible examples - lamp_simple_rhel7, 
 
-- modified original jinjia templates to pick the correct ip address. Original
+- roles/web/templates/ 
+modified original jinjia templates to pick the correct ip address. Original
 example uses default ipv4 address.
 
-- added commands to remove anynomus uses in mysql and to flush privileges
+- roles/db/tasks 
+added commands to remove anonymous users in mysql and to flush privileges
 
 )
 
@@ -25,17 +27,14 @@ This LAMP stack can be on a single node or multiple nodes. The inventory file
 'hosts' defines the nodes in which the stacks should be configured.
 
         [webservers]
-        localhost
+        182.168.223.123
 
         [dbservers]
-        bensible
+        192.168.223.124
 
-Here the webserver would be configured on the local host and the dbserver on a
-server called "bensible". The stack can be deployed using the following
-command:
 
         ansible-playbook -i hosts site.yml
 
-Once done, you can check the results by browsing to http://localhost/index.php.
+Once done, you can check the results by browsing to http://192.168.223.123/index.php.
 You should see a simple test page and a list of databases retrieved from the
 database server.
