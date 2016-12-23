@@ -27,7 +27,7 @@ This LAMP stack can be on a single node or multiple nodes. The inventory file
 'hosts' defines the nodes in which the stacks should be configured.
 
         [webservers]
-        182.168.223.123
+        192.168.223.123
 
         [dbservers]
         192.168.223.124
