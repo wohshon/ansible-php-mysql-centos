@@ -11,7 +11,7 @@
 
 - name: configure and deploy the webservers and application code
   hosts: webservers
-  remote_user: virtuser
+  remote_user: centos
   become: true
 
   roles:
@@ -19,7 +19,7 @@
 
 - name: deploy MySQL and configure the databases
   hosts: dbservers
-  remote_user: virtuser
+  remote_user: centos
   become: true
 
   roles:
