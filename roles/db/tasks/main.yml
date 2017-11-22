@@ -31,9 +31,11 @@
   firewalld: port={{ mysql_port }}/tcp permanent=true state=enabled immediate=yes
 
 - name: Create Application Database
-  mysql_db: name={{ dbname }} state=present
-  login_user: root
-  login_password: ''
+  mysql_db: 
+    name={{ dbname }} 
+    state=present
+    login_user: root
+    login_password: ''
   
 
 - name: Create Application DB User
