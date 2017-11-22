@@ -7,5 +7,9 @@
   tags:
     - deploy-html
 
+  name: debug stuffs
+  debug:
+    msg: "test groups['dbservers']"
+
 - name: Creates the index.php file
   template: src=index.php.j2 dest=/var/www/html/index.php
