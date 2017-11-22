@@ -13,7 +13,7 @@
 echo  "Connecting to database.... </BR>";
 echo  "<B>Retrieved List of Databases:</B> </BR>";
         {% for host in groups['tag_node_type_db'] %}
-                $link = mysqli_connect('{{ hostvars[host].ansible_all_ipv4_addresses[0] }}', '{{ hostvars[host].dbuser }}', '{{ hostvars[host].upassword }}') or die(mysqli_connect_error($link));
+                $link = mysqli_connect('{{ hostvars[host].ec2_private_ip_address }}', '{{ hostvars[host].dbuser }}', '{{ hostvars[host].upassword }}') or die(mysqli_connect_error($link));
         {% endfor %}
         $res = mysqli_query($link, "SHOW DATABASES;");
         while ($row = mysqli_fetch_assoc($res)) {
