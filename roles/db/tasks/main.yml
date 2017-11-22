@@ -32,8 +32,9 @@
 
 - name: Create Application Database
   mysql_db: name={{ dbname }} state=present
-    login_user: root
-    login_password: ''
+  login_user: root
+  login_password: ''
+  
 
 - name: Create Application DB User
   mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present
