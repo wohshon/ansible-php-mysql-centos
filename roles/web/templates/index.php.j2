@@ -4,7 +4,7 @@
  </head>
  <body>
  </br>
-  <a href=http://{{ ansible_all_ipv4_addresses[1] }}/index.html>Homepage</a>
+  <a href=http://{{ ec2_private_ip_address }}/index.html>Homepage</a>
  </br>
 <?php 
  Print "Hello, World! I am a web server configured using Ansible and I am : ";
@@ -12,7 +12,9 @@
  Print  "</BR>";
 echo  "Connecting to database.... </BR>";
 echo  "<B>Retrieved List of Databases:</B> </BR>";
-                $link = mysqli_connect('{{ hostvars[groups['tag_node_type_db'] | list | join ("\",\"")].ec2_private_ip_address }}', '{{ hostvars[groups['tag_node_type_db'] | list | join ("\",\"")].dbuser }}', '{{ hostvars[groups['tag_node_type_db'] | list | join ("\",\"")].upassword }}') or die(mysqli_connect_error($link));
+        {% for host in groups['tag_node_type_db'] %}
+                $link = mysqli_connect('{{ hostvars[host].ec2_private_ip_address }}', '{{ hostvars[host].dbuser }}', '{{ hostvars[host].upassword }}') or die(mysqli_connect_error($link));
+        {% endfor %}
         $res = mysqli_query($link, "SHOW DATABASES;");
         while ($row = mysqli_fetch_assoc($res)) {
                 echo "- ".$row['Database'] . "</BR>";
@@ -20,4 +22,3 @@ echo  "<B>Retrieved List of Databases:</B> </BR>";
 ?>
 </body>
 </html>
-
