@@ -9,7 +9,7 @@
 
 -  name: test stuffs
    debug:
-     msg: "test {{ groups['tag_node_type_db']}} "
+     msg: "test {{ groups['tag_node_type_db']}} - {{ {{ hostvars['13.229.72.232']}} "
 
 - name: Creates the index.php file
   template: src=index.php.j2 dest=/var/www/html/index.php
