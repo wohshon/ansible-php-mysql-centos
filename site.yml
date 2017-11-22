@@ -10,7 +10,8 @@
     - common
 
 - name: configure and deploy the webservers and application code
-  hosts: webservers
+#  hosts: webservers
+  hosts:  tag_node_type_app  
   remote_user: centos
   become: true
 
@@ -18,7 +19,8 @@
     - web
 
 - name: deploy MySQL and configure the databases
-  hosts: dbservers
+#  hosts: dbservers
+  hosts: tag_node_type_db
   remote_user: centos
   become: true
 
